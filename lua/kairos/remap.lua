@@ -23,3 +23,11 @@ vim.keymap.set("n", "<leader>f", [[:!mpv ~/Desktop/Projects/Fuck/'Fuck Scream.mp
 
 vim.keymap.set("n", "<C-o>", "o<Esc>0")
 vim.keymap.set("n", "<C-O>", "O<Esc>0")
+
+-- Asterixizing(?)
+vim.keymap.set('n', '<C-a>', 'I*<Esc>A*')
+vim.keymap.set('v', '<C-a>', 'c*<C-r>"*<Esc>')
+
+-- Strikethrough
+vim.keymap.set('n', '<C-s>', 'I~~<Esc>A~~')
+vim.keymap.set('v', '<C-s>', 'c~~<C-R>"~~<Esc>')
