@@ -27,6 +27,7 @@ return {
     require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
+                "eslint",
                 "rust_analyzer",
             },
             handlers = {
@@ -53,7 +54,7 @@ return {
                 end,
             }
     })
-    
+
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
     cmp.setup({
