@@ -23,21 +23,45 @@ return {
       cmp_lsp.default_capabilities())
 
     require("fidget").setup({})
-    require("mason").setup()
+    require("mason").setup({
+    })
     require("mason-lspconfig").setup({
             ensure_installed = {
+                "clangd",
                 "lua_ls",
                 "eslint",
                 "rust_analyzer",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
 
+                ["pylsp"] = function()
+                  local lspconfig = require("lspconfig")
+                  lspconfig.pylsp.setup {
+                    settings = {
+                      pylsp = {
+                        plugins = {
+                          pycodestyle = {
+                            enabled = false
+                            --ignore = {'W391'},
+                            --maxLineLength = 100
+                          }
+                        }
+                      }
+                    }
+                  }
+                end,
+
+                ["html"] = function()
+                  local lspconfig = require("lspconfig")
+                  lspconfig.html.setup({
+                    filetypes = {"html","ejs"},
+                    })
+                end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
@@ -58,7 +82,7 @@ return {
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
     cmp.setup({
-      snipper = {
+      snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
         end,

@@ -12,24 +12,14 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionzer<CR>")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("x", "<leader>p", [["_dP"]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "<C-c>", "<Esc>") -- People not gonna like this one
 
-vim.keymap.set("n", "<leader>f", [[:!mpv ~/Desktop/Projects/Fuck/'Fuck Scream.mp3'<CR>]])
+vim.keymap.set("n", "<leader>f", [[:!mpv ~/.config/nvim/lua/kairos/assets/'fuck.mp3'<CR>]])
 
-vim.keymap.set("n", "<C-o>", "o<Esc>0")
 vim.keymap.set("n", "<C-O>", "O<Esc>0")
-
--- Asterixizing(?)
-vim.keymap.set('n', '<C-a>', 'I*<Esc>A*<Esc>')
-vim.keymap.set('v', '<C-a>', 'c*<C-r>"*<Esc>')
-
--- Strikethrough
-vim.keymap.set('n', '<C-s>', 'I~~<Esc>A~~<Esc>')
-vim.keymap.set('v', '<C-s>', 'c~~<C-R>"~~<Esc>')
