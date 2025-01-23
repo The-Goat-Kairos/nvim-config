@@ -1,3 +1,4 @@
+vim.keymap.set("n", "<A-v>", "<C-v>", {noremap=true, silent=true})
 require("kairos.remap")
 require("kairos.set")
 require("kairos.lazy_init")
