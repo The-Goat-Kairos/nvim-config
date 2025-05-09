@@ -46,9 +46,7 @@ return {
                       pylsp = {
                         plugins = {
                           pycodestyle = {
-                            enabled = false
-                            --ignore = {'W391'},
-                            --maxLineLength = 100
+                            enabled = false,
                           }
                         }
                       }
@@ -62,6 +60,7 @@ return {
                     filetypes = {"html","ejs"},
                     })
                 end,
+
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {

@@ -4,7 +4,7 @@ return {
   config = function()
     require("cloak").setup({
       enabled = true,
-      cloak_character = "*",
+      cloak_character = "ඞ ",
       patterns = {
         {
           file_pattern = {
