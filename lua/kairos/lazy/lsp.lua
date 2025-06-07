@@ -33,7 +33,10 @@ return {
     require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
+                "prettier",
+                "prettierd",
                 "eslint",
+                "stylua",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
