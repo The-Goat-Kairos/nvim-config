@@ -18,12 +18,16 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("x", "<leader>p", [["_dP"]])
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("i", "<C-c>", "<Esc>") -- People not gonna like this one
 
-vim.keymap.set("n", "<leader>f", [[:!mpv ~/.config/nvim/lua/kairos/assets/'fuck.mp3'<CR>]])
+vim.keymap.set("n", "<leader>F", [[:!mpv ~/.config/nvim/lua/kairos/assets/'fuck.mp3'<CR>]])
+
+vim.keymap.set("n", "<leader>f", function()
+	require("conform").format({ bufnr = 0 })
+end)
 
 vim.keymap.set("n", "<C-O>", "O<Esc>0")
 
