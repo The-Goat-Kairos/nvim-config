@@ -4,10 +4,14 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
-				lua = { "stylua" },
+				lua = { "my_stylua", stop_after_first = true },
 				javascript = { "my_prettierd", stop_after_first = true },
 			},
 			formatters = {
+                my_stylua = {
+                    command = "stylua",
+                    args = { "--config-path", "/home/kairos/.config/nvim/lua/kairos/utils/stylua.toml", "$FILENAME" }
+                },
 				my_prettierd = {
 					command = "prettierd",
 					args = { "$FILENAME" },
