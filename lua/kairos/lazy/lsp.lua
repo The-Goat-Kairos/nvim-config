@@ -1,32 +1,32 @@
 return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    "stevearc/conform.nvim",
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    "j-hui/fidget.nvim",
-  },
+    "neovim/nvim-lspconfig",
+    dependencies = {
+        "stevearc/conform.nvim",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/nvim-cmp",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+        "j-hui/fidget.nvim",
+    },
 
-  config = function()
-    local cmp = require("cmp")
-    local cmp_lsp = require("cmp_nvim_lsp")
-    local capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      cmp_lsp.default_capabilities())
+    config = function()
+        local cmp = require("cmp")
+        local cmp_lsp = require("cmp_nvim_lsp")
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_lsp.default_capabilities())
 
-    require("fidget").setup({})
-    require("mason").setup({
-    })
-    require("mason-lspconfig").setup({
+        require("fidget").setup({})
+        require("mason").setup({
+        })
+        require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
             },
@@ -37,25 +37,40 @@ return {
                     }
                 end,
 
-                ["pylsp"] = function()
-                  local lspconfig = require("lspconfig")
-                  lspconfig.pylsp.setup {
-                    settings = {
-                      pylsp = {
-                        plugins = {
-                          pycodestyle = {
-                            enabled = false,
-                          }
+                ["hls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.hls.setup {
+                        settings = {
+                            haskell = {
+                                plugin = {
+                                    hlint = {
+                                        globalOn = false
+                                    }
+                                }
+                            }
                         }
-                      }
                     }
-                  }
+                end,
+
+                ["pylsp"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.pylsp.setup {
+                        settings = {
+                            pylsp = {
+                                plugins = {
+                                    pycodestyle = {
+                                        enabled = false,
+                                    }
+                                }
+                            }
+                        }
+                    }
                 end,
 
                 ["html"] = function()
-                  local lspconfig = require("lspconfig")
-                  lspconfig.html.setup({
-                    filetypes = {"html","ejs"},
+                    local lspconfig = require("lspconfig")
+                    lspconfig.html.setup({
+                        filetypes = {"html","ejs"},
                     })
                 end,
 
@@ -64,45 +79,45 @@ return {
                     lspconfig.lua_ls.setup {
                         capabilities = capabilities,
                         settings = {
-                        Lua = {
-                              runtime = {
-                                version = 'Lua 5.1',
-                                diagnostics = {
-                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+                            Lua = {
+                                runtime = {
+                                    version = 'Lua 5.1',
+                                    diagnostics = {
+                                        globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+                                    }
                                 }
-                              }
-                           }
+                            }
                         }
                     }
                 end,
             }
-    })
+        })
 
-    local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body)
-        end,
-      },
+        cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
 
-      mapping = cmp.mapping.preset.insert({
-        ['<C-[>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-]>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-Bslash>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-      }),
+            mapping = cmp.mapping.preset.insert({
+                ['<C-[>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-]>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-Bslash>'] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            }),
 
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-      }),
-      {
-        { name = "buffer" },
-      }
-    })
+            sources = cmp.config.sources({
+                { name = "nvim_lsp" },
+                { name = "luasnip" },
+            }),
+            {
+                { name = "buffer" },
+            }
+        })
 
-  end
+    end
 
 }
