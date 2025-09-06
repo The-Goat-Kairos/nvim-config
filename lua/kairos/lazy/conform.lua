@@ -6,6 +6,7 @@ return {
 			formatters_by_ft = {
                 c = { "clang-format" },
                 haskell = { "ormolu" },
+                html = { "html_beautify" },
 				lua = { "my_stylua", stop_after_first = true },
 				javascript = { "my_prettierd", stop_after_first = true },
 			},
