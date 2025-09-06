@@ -4,6 +4,8 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
+                c = { "clang-format" },
+                haskell = { "ormolu" },
 				lua = { "my_stylua", stop_after_first = true },
 				javascript = { "my_prettierd", stop_after_first = true },
 			},
