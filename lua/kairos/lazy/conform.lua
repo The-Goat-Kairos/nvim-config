@@ -5,12 +5,17 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
                 c = { "clang-format" },
-                haskell = { "ormolu" },
+                haskell = { "my_ormolu" },
                 html = { "html_beautify" },
 				lua = { "my_stylua", stop_after_first = true },
 				javascript = { "my_prettierd", stop_after_first = true },
 			},
 			formatters = {
+                my_ormolu = {
+                    command = "ormolu",
+                    stdin = true,
+                    args = { }
+                },
                 my_stylua = {
                     command = "stylua",
                     args = { "--config-path", "/home/kairos/.config/nvim/lua/kairos/utils/stylua.toml", "$FILENAME" }
