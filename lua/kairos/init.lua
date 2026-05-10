@@ -4,7 +4,32 @@ require("kairos.set")
 require("kairos.lazy_init")
 require("kairos.autocmd")
 
-local KairosGroup = vim.api.nvim_create_augroup('Kairos', {})
+local vim = vim
+local opt = vim.opt
+local api = vim.api
+
+-- Folding
+opt.foldmethod = "expr"
+opt.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
+opt.foldenable = true
+opt.foldlevel  = 99
+opt.foldlevelstart = 99
+opt.foldnestmax = 20
+
+api.nvim_create_autocmd({ "BufReadPost", "FileReadPost", "BufWinEnter" }, {
+    group = vim.api.nvim_create_augroup("TreesitterFolding", { clear = true }),
+    callback = function()
+        if vim.bo.buftype == "" then  -- only for normal files
+            vim.wo.foldmethod = "expr"
+            vim.wo.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
+            vim.wo.foldlevel  = 99
+            vim.wo.foldenable = true
+        end
+    end,
+})
+
+-- Various other useful LSP Commands
+local KairosGroup = api.nvim_create_augroup('Kairos', {})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = KairosGroup,

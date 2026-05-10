@@ -37,6 +37,22 @@ return {
                     }
                 end,
 
+                ["clangd"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.clangd.setup {
+                        capabilities = capabilities,
+                        -- cmd = {
+                        --     "clangd",
+                        --     -- "--background-index",
+                        --     -- "--clang-tidy",
+                        --     -- "--header-insertion=iwyu",
+                        --     -- "--completion-style=detailed",
+                        --     -- "--function-arg-placeholders",
+                        -- },
+                        -- root_dir = lspconfig.util.root_pattern("compile_commands.json", "Makefile", ".git"),
+                    }
+                end,
+
                 ["hls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.hls.setup {
