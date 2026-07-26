@@ -26,7 +26,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>") -- People not gonna like this one
 vim.keymap.set("n", "<leader>F", [[:!mpv ~/.config/nvim/lua/kairos/utils/'fuck.mp3'<CR>]])
 
 vim.keymap.set("n", "<leader>f", function()
-	require("conform").format({ bufnr = 0 })
+    require("conform").format({ bufnr = 0 })
 end)
 
 vim.keymap.set("n", "<C-O>", "O<Esc>0")
