@@ -8,7 +8,6 @@ return {
                 terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 
                 on_colors = function(colors)
-                    colors.bg = "#181818"
                 end
             })
 
