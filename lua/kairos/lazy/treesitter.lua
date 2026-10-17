@@ -3,7 +3,27 @@ return {
   lazy = true,
   build = ":TSUpdate",
   config = function()
-    require('nvim-treesitter').install { "javascript", "typescript", "c", "cpp", "lua", "rust", "bash", "html", "css", "svelte", "haskell", "python" }
+    require('nvim-treesitter').install {
+        "javascript",
+        "markdown",
+        "markdown_inline",
+        "html",
+        "comment",
+        "latex",
+        "typst",
+        "yaml",
+        "typescript",
+        "c",
+        "cpp",
+        "lua",
+        "rust",
+        "bash",
+        "html",
+        "css",
+        "svelte",
+        "haskell",
+        "python",
+    }
     -- require("nvim-treesitter.configs").setup({
 
     --   sync_install = false,
