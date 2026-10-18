@@ -1,4 +1,0 @@
-
-
-main = do
-    putStrLn "Hello"
