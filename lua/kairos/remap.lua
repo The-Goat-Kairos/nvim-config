@@ -1,3 +1,4 @@
+local vim = vim
 vim.g.mapleader = " "
 vim.keymap.set("n", "<BS><BS>", vim.cmd.Ex)
 
