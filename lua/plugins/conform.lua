@@ -18,14 +18,20 @@ return {
                 },
                 my_stylua = {
                     command = "stylua",
-                    args = { "--config-path", "/home/kairos/.config/nvim/lua/kairos/utils/stylua.toml", "$FILENAME" },
+                    args = {
+                        "--config-path",
+                        "/home/kairos/.config/nvim/lua/resources/stylua.toml",
+                        "--stdin-filepath",
+                        "$FILENAME",
+                        "-",
+                    },
                 },
                 my_prettierd = {
                     command = "prettierd",
                     args = { "$FILENAME" },
                     stdin = true,
                     env = {
-                        PRETTIERD_DEFAULT_CONFIG = "/home/kairos/.config/nvim/lua/kairos/utils/.prettierrc",
+                        PRETTIERD_DEFAULT_CONFIG = "/home/kairos/.config/nvim/lua/resources/.prettierrc",
                     },
                 },
             },
