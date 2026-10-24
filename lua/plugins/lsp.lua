@@ -14,13 +14,10 @@ return {
     config = function() 
         local cmp = require("cmp")
         local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
         
         require("fidget").setup({})
+
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
             snippet = {
@@ -35,8 +32,8 @@ return {
             },
             
             mapping = cmp.mapping.preset.insert({
-                ['<C-[>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-]>'] = cmp.mapping.scroll_docs(4),
+                ['<C-[>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-]>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-Bslash>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort(),
