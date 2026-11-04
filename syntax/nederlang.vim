@@ -8,7 +8,7 @@ if exists("b:current_syntax")
 endif
 
 " Keywords
-syn keyword     nlType              int
+syn keyword     nlType              geheel
 syn keyword     nlStatement         geefterug gezelligheid
 syn keyword     nlConditioneel      als dan anders
 syn keyword     nlHerhalen          zolang
@@ -16,8 +16,8 @@ syn keyword     nlBoolean           waar vals
 syn keyword     nlTedoen            tedoen
 
 " Literals 
-syn match       nlNummer            '\<\d\+\>'
-syn match       nlIdentifier        '\<[A-Za-z_][A-Za-z0-9_]*\>'
+" syn match       nlNummer            '\<\d\+\>'
+" syn match       nlIdentifier        '\<[A-Za-z_][A-Za-z0-9_]*\>'
 
 " Strings and #{identifier} interpretation
 syn match       nlInterpolatie      '#{[A-Za-z_][A-Za-z0-9_]*}' contained
@@ -37,13 +37,13 @@ syn match       nlPunctuation       '[(){};,#]'
 
 
 hi def link     nlType              Type
-hi def link     nlStatement         Type
+hi def link     nlStatement         Statement
 hi def link     nlConditioneel      Conditional
 hi def link     nlHerhalen          Repeat
 hi def link     nlBoolean           Boolean
 hi def link     nlTedoen            Todo
-hi def link     nlNummer            Number
-hi def link     nlIdentifier        Identifier
+" hi def link     nlNummer            Number
+" hi def link     nlIdentifier        Identifier
 hi def link     nlTekenreeks        String
 hi def link     nlInterpolatie      Special
 hi def link     nlOperator          Operator
