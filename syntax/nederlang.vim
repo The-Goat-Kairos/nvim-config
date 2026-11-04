@@ -23,6 +23,9 @@ syn keyword     nlTedoen            tedoen
 syn match       nlInterpolatie      '#{[A-Za-z_][A-Za-z0-9_]*}' contained
 syn region      nlTekenreeks        start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=nlInterpolatie
 
+" Functies
+syn match       nlFunctieNaam       /\<\h\w*\>\ze\s*(/
+
 " Operators and whatever
 syn match       nlOperator          '=='
 syn match       nlOperator          '!='
@@ -45,6 +48,7 @@ hi def link     nlTedoen            Todo
 " hi def link     nlNummer            Number
 " hi def link     nlIdentifier        Identifier
 hi def link     nlTekenreeks        String
+hi def link     nlFunctieNaam       Function
 hi def link     nlInterpolatie      Special
 hi def link     nlOperator          Operator
 hi def link     nlPunctuation       Delimiter
