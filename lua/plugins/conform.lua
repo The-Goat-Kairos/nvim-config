@@ -5,16 +5,19 @@ return {
         require("conform").setup({
             formatters_by_ft = {
                 c = { "clang-format" },
-                haskell = { "my_ormolu" },
+                haskell = { "my_fourmolu" },
                 html = { "html_beautify" },
                 lua = { "my_stylua", stop_after_first = true },
                 javascript = { "my_prettierd", stop_after_first = true },
             },
             formatters = {
-                my_ormolu = {
-                    command = "ormolu",
+                my_fourmolu = {
+                    command = "fourmolu",
                     stdin = true,
-                    args = {},
+                    args = {
+                        "--stdin-input-file",
+                        "$FILENAME"
+                    },
                 },
                 my_stylua = {
                     command = "stylua",

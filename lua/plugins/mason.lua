@@ -29,7 +29,22 @@ return {
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
-                end
+                end,
+
+                ["hls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.hls.setup {
+                        settings = {
+                            haskell = {
+                                plugin = {
+                                    hlint = {
+                                        globalOn = false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                end,
             }
         })
     end,

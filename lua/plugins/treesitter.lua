@@ -26,7 +26,11 @@ return {
                 "svelte",
                 "haskell",
                 "python",
-            }
+            },
+            highlight = {
+                enable = true,
+            },
+            indent = {enable = true},
         }
     }
 }
